@@ -38,20 +38,20 @@ def handle(connection, address):
 
         while True:
             data = receive_data(connection)
-            logger.info(f"Received request  {str(data)}")
+            logger.info(f"Received request {str(data)}")
 
             if data == "":
                 logger.debug(f"No data received. Connection with {address} closed.")
                 answer(connection, "Invalid request", str(data))
                 break
-            if Operation.product in data:
-                answer(connection, product(data[1], data[2]), "Product of {},{}".format((data[1]), str(data[2])))
+            if Operation.product == data[0]:
+                answer(connection, product(data[1], data[2]), f"Product of {data[1]},{data[2]}")
                 break
-            if Operation.factorial in data:
-                answer(connection, factorial(data[1]), "Factorial of {}".format(str(data[1])))
+            if Operation.factorial == data[0]:
+                answer(connection, factorial(data[1]), f"Factorial of {str(data[1])}")
                 break
-            if Operation.sum in data:
-                answer(connection, sum_(data[1], data[2]), ("Sum {},{}".format((data[1]), str(data[2]))))
+            if Operation.sum == data[0]:
+                answer(connection, sum_(data[1], data[2]), f"Sum {data[1]},{data[2]}")
                 break
             else:
                 logger.info("Unsupported operation")
@@ -60,7 +60,7 @@ def handle(connection, address):
 
     except RuntimeError:
         logger.exception("Can't handle request")
-        connection.close()
+        answer(connection, "Can't handle request", "")
 
 
 class Server(object):
