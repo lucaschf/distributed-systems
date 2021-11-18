@@ -5,7 +5,7 @@ from server_helpers import send_data, receive_data
 from server_operations import Operation
 import logging
 
-from math import factorial as fact
+from math import factorial
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger("")
@@ -13,10 +13,6 @@ logger = logging.getLogger("")
 
 def product(a, b):
     return a * b
-
-
-def factorial(value):
-    return fact(value)
 
 
 def sum_(a, b):
