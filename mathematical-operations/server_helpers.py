@@ -2,8 +2,6 @@ import pickle
 
 HEADER_SIZE = 10
 
-CHUNK = 2048
-
 
 def send_data(data, client_socket, header_size=HEADER_SIZE):
     msg = pickle.dumps(data)
@@ -31,5 +29,3 @@ def receive_data(client_socket, header_size=HEADER_SIZE):
 
             if len(full_msg) - header_size == msg_len:
                 return pickle.loads(full_msg[header_size:])
-
-
