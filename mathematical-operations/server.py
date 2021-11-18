@@ -5,6 +5,8 @@ from server_helpers import send_data, receive_data
 from server_operations import Operation
 import logging
 
+from math import factorial as fact
+
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger("")
 
@@ -14,11 +16,7 @@ def product(a, b):
 
 
 def factorial(value):
-    fat = 1
-    for i in range(2, value + 1):
-        fat *= i
-
-    return fat
+    return fact(value)
 
 
 def sum_(a, b):
@@ -91,7 +89,6 @@ if __name__ == "__main__":
     server_address = "10.0.1.15"
     server_port = 12000
 
-    logging.basicConfig(level=logging.INFO)
     server = Server(server_address, server_port)
 
     try:
