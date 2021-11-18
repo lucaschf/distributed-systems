@@ -16,3 +16,20 @@ soma = op.soma(2, 3)
 print(soma) # Exibe 5
 `````
 
+
+
+## Rodando o projeto
+
+Altere o IP do servidor localizado no arquivo server.py assim como no arquivo cliente.py para o IP desejado e em seguida execute os seguintes arquivos em ordem: 
+
+````
+1 - server.py
+2 - cliente.py
+````
+
+
+
+
+
+
+
