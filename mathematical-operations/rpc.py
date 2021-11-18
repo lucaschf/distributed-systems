@@ -12,23 +12,23 @@ class MathematicalOperations:
 
     def sum(self, a, b):
         args = [Operation.sum, a, b]
-        return self.request_operation(args)
+        return self.__request_operation(args)
 
     def product(self, a, b):
         args = [Operation.product, a, b]
-        return self.request_operation(args)
+        return self.__request_operation(args)
 
     def factorial(self, value):
         args = [Operation.factorial, value]
-        return self.request_operation(args)
+        return self.__request_operation(args)
 
-    def create_connection(self):
+    def __create_connection(self):
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         sock.connect((self.__server_address, self.__server_port))
         return sock
 
-    def request_operation(self, args):
-        sock = self.create_connection()
+    def __request_operation(self, args):
+        sock = self.__create_connection()
         send_data(args, sock)
 
         result = receive_data(sock)
